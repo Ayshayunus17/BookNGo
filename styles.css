@@ -184,11 +184,17 @@ body {
 .input-with-icon .rupee-icon {
     position: absolute;
     left: 14px;
-    top: 44%;
+    top: 40%;
     transform: translateY(-50%);
     color: #9ca3af;
     width: 18px;
     height: 18px;
+    font-size: 18px; 
+}
+
+.rupee-icon-trip {
+   margin-right: 6px; 
+   font-size: 18px; 
 }
 
 .input-with-icon input {
