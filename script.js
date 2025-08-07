@@ -269,7 +269,7 @@ function displayTripPlan(plan) {
         <div class="flight-info">
             <p><strong>${plan.flights.outbound}</strong></p>
             <p><strong>${plan.flights.return}</strong></p>
-            <p class="activity-cost">Total: $${plan.flights.totalCost}</p>
+            <p class="activity-cost">Total: ₹${plan.flights.totalCost}</p>
         </div>
     `;
     
@@ -277,9 +277,9 @@ function displayTripPlan(plan) {
     hotelDetails.innerHTML = `
         <div class="hotel-info">
             <p><strong>${plan.accommodation.name}</strong></p>
-            <p>$${plan.accommodation.pricePerNight}/night</p>
+            <p>₹${plan.accommodation.pricePerNight}/night</p>
             <div class="hotel-rating">
-                <span>★ ${plan.accommodation.rating}</span>
+                <span><span class="rupee-icon">₹</span>${plan.accommodation.rating}</span>
             </div>
             <div class="amenities">
                 ${plan.accommodation.amenities.map(amenity => 
@@ -293,15 +293,15 @@ function displayTripPlan(plan) {
     activitiesList.innerHTML = plan.activities.map(activity => `
         <div class="activity-item">
             <span>${activity.name}</span>
-            <span class="activity-cost">$${activity.cost}</span>
+            <span class="activity-cost">₹${activity.cost}</span>
         </div>
     `).join('');
     
     // Budget summary
-    totalCost.textContent = `$${plan.totalEstimated}`;
+    totalCost.textContent = `₹${plan.totalEstimated}`;
     const withinBudget = plan.totalEstimated <= plan.totalBudget;
     budgetMessage.textContent = withinBudget 
-        ? `Great! Within your $${plan.totalBudget} budget!` 
+        ? `Great! Within your ₹${plan.totalBudget} budget!` 
         : `Slightly over budget. Consider adjusting your preferences.`;
     budgetMessage.style.color = withinBudget ? '#047857' : '#dc2626';
     
@@ -400,7 +400,7 @@ function populateTrips() {
                         </div>
                         <div class="trip-meta">
                             <i data-lucide="dollar-sign"></i>
-                            <span>Budget: $${trip.budget}</span>
+                            <span>Budget: ₹${trip.budget}</span>
                         </div>
                     </div>
                 </div>
@@ -468,7 +468,7 @@ function populateReviews() {
 function viewTripDetails(tripId) {
     const trip = sampleTrips.find(t => t.id === tripId);
     if (trip) {
-        alert(`Viewing details for ${trip.destination}\nDates: ${trip.dates}\nBudget: $${trip.budget}\nStatus: ${trip.status}`);
+        alert(`Viewing details for ${trip.destination}\nDates: ${trip.dates}\nBudget: ₹${trip.budget}\nStatus: ${trip.status}`);
     }
 }
 
