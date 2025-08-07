@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookNGo - Your Travel Planning Companion</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="logo.png">
+                    <h1>BookNGo</h1>
+                </div>
+                <div class="header-actions">
+                    <i data-lucide="search"></i>
+                    <div class="profile-avatar">
+                        <i data-lucide="user"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <div id="home-page" class="page active">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h2>Plan Your Perfect Trip</h2>
+                <p>Tell us your budget and preferences, we'll handle the rest!</p>
+            </div>
+
+            <!-- Trip Planning Form -->
+            <div class="trip-form-container">
+                <h3><i data-lucide="plane"></i> Plan New Trip</h3>
+                <form id="trip-form" class="trip-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>From</label>
+                            <div class="input-with-icon">
+                                <i data-lucide="map-pin"></i>
+                                <input type="text" id="from" placeholder="Departure city">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>To</label>
+                            <div class="input-with-icon">
+                                <i data-lucide="map-pin"></i>
+                                <input type="text" id="to" placeholder="Destination">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Budget (₹)</label>
+                            <div class="input-with-icon">
+                                <span class="rupee-icon">₹</span>
+                                <input type="number" id="budget" placeholder="Total budget">
+                            </div>
+                        </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label>Travelers</label>
+                            <select id="travelers">
+                                <option value="1">1 Traveler</option>
+                                <option value="2">2 Travelers</option>
+                                <option value="3">3 Travelers</option>
+                                <option value="4">4+ Travelers</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn-primary btn-trip">Generate Trip Plan</button>
+                    </div>
+                </form>
+                <!-- Popular Destinations -->
+            <div class="popular-destinations">
+                <h3>Popular Destinations</h3>
+                <div class="destinations-grid">
+                    <div class="destination-card">
+                        <div class="destination-flag">🇫🇷</div>
+                        <div class="destination-name">Paris</div>
+                    </div>
+                    <div class="destination-card">
+                        <div class="destination-flag">🇯🇵</div>
+                        <div class="destination-name">Tokyo</div>
+                    </div>
+                    <div class="destination-card">
+                        <div class="destination-flag">🇮🇹</div>
+                        <div class="destination-name">Rome</div>
+                    </div>
+                    <div class="destination-card">
+                        <div class="destination-flag">🇹🇭</div>
+                        <div class="destination-name">Bangkok</div>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <!-- Generated Trip Plan -->
+            <div id="trip-plan" class="trip-plan hidden">
+                <h3 class="plan-title">✨ Your Trip Plan</h3>
+                <div class="plan-grid">
+                    <div class="plan-card">
+                        <h4><i data-lucide="plane"></i> Flights</h4>
+                        <div id="flight-details"></div>
+                    </div>
+                    <div class="plan-card">
+                        <h4><i data-lucide="hotel"></i> Accommodation</h4>
+                        <div id="hotel-details"></div>
+                    </div>
+                </div>
+                <div class="plan-card">
+                    <h4><i data-lucide="camera"></i> Recommended Activities</h4>
+                    <div id="activities-list" class="activities-grid"></div>
+                </div>
+                <div class="budget-summary">
+                    <div class="summary-content">
+                        <span>Total Estimated Cost:</span>
+                        <span id="total-cost" class="total-amount"></span>
+                    </div>
+                    <p id="budget-message" class="budget-message"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Account Page -->
+        <div id="account-page" class="page">
+            <div class="account-container">
+                <h2><i data-lucide="user"></i> Account Profile</h2>
+                <div class="profile-section">
+                    <div class="profile-avatar-large">
+                        <i data-lucide="user"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h3>John Traveler</h3>
+                        <p>john.traveler@email.com</p>
+                        <p class="member-since">Member since March 2023</p>
+                    </div>
+                </div>
+
+                <div class="account-grid">
+                    <div class="account-section">
+                        <h4>Personal Information</h4>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" value="John Traveler">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" value="john.traveler@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" value="+1 (555) 123-4567">
+                        </div>
+                    </div>
+                    
+                    <div class="account-section">
+                        <h4>Travel Preferences</h4>
+                        <div class="form-group">
+                            <label>Preferred Budget Range</label>
+                            <select>
+                                <option>$1,000 - $3,000</option>
+                                <option>$3,000 - $5,000</option>
+                                <option>$5,000+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Travel Style</label>
+                            <select>
+                                <option>Adventure</option>
+                                <option>Relaxation</option>
+                                <option>Cultural</option>
+                                <option>Business</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn-primary">Save Changes</button>
+            </div>
+
+            <!-- Travel Stats -->
+            <div class="stats-container">
+                <h3>Your Travel Stats</h3>
+                <div class="stats-grid">
+                    <div class="stat-card stat-blue">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Trips Completed</div>
+                    </div>
+                    <div class="stat-card stat-green">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Countries Visited</div>
+                    </div>
+                    <div class="stat-card stat-purple">
+                        <div class="stat-number">$24k</div>
+                        <div class="stat-label">Total Saved</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- My Trips Page -->
+        <div id="trips-page" class="page">
+            <div class="page-header">
+                <h2>My Trips</h2>
+                <button class="btn-primary">Plan New Trip</button>
+            </div>
+            
+            <div id="trips-list" class="trips-list">
+                <!-- Trip cards will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Reviews Page -->
+        <div id="reviews-page" class="page">
+            <h2>Reviews & Ratings</h2>
+            
+            <div id="reviews-list" class="reviews-list">
+                <!-- Reviews will be populated by JavaScript -->
+            </div>
+
+            <!-- Write New Review -->
+            <div class="write-review">
+                <h3>Write a Review</h3>
+                <form id="review-form">
+                    <div class="form-group">
+                        <label>Destination</label>
+                        <input type="text" placeholder="Where did you travel?">
+                    </div>
+                    <div class="form-group">
+                        <label>Rating</label>
+                        <div class="star-rating">
+                            <i data-lucide="star" data-rating="1"></i>
+                            <i data-lucide="star" data-rating="2"></i>
+                            <i data-lucide="star" data-rating="3"></i>
+                            <i data-lucide="star" data-rating="4"></i>
+                            <i data-lucide="star" data-rating="5"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Review</label>
+                        <textarea placeholder="Share your experience..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Submit Review</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- More Page -->
+        <div id="more-page" class="page">
+            <h2>More</h2>
+            
+            <div class="more-options">
+                <div class="more-item">
+                    <h3>Help & Support</h3>
+                    <p>Get assistance with your bookings and travel plans</p>
+                </div>
+                <div class="more-item">
+                    <h3>Travel Insurance</h3>
+                    <p>Protect your trips with comprehensive coverage</p>
+                </div>
+                <div class="more-item">
+                    <h3>Rewards Program</h3>
+                    <p>Earn points on every booking and get exclusive benefits</p>
+                </div>
+                <div class="more-item">
+                    <h3>Settings</h3>
+                    <p>Manage notifications and privacy preferences</p>
+                </div>
+                <div class="more-item">
+                    <h3>About</h3>
+                    <p>Learn more about our travel planning service</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <button class="nav-item active" data-page="home">
+            <i data-lucide="home"></i>
+            <span>Home</span>
+        </button>
+        <button class="nav-item" data-page="trips">
+            <i data-lucide="clock"></i>
+            <span>My Trips</span>
+        </button>
+        <button class="nav-item" data-page="reviews">
+            <i data-lucide="star"></i>
+            <span>Reviews</span>
+        </button>
+        <button class="nav-item" data-page="account">
+            <i data-lucide="user"></i>
+            <span>Account</span>
+        </button>
+        <button class="nav-item" data-page="more">
+            <i data-lucide="menu"></i>
+            <span>More</span>
+        </button>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/lucide.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
