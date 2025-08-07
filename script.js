@@ -399,7 +399,7 @@ function populateTrips() {
                             <span>${trip.dates}</span>
                         </div>
                         <div class="trip-meta">
-                            <i data-lucide="dollar-sign"></i>
+                            <span class="rupee-icon rupee-icon-trip">₹</span>
                             <span>Budget: ₹${trip.budget}</span>
                         </div>
                     </div>
